@@ -50,8 +50,8 @@ def is_post_request(environ):
 
 def application(environ, start_response):
     if not is_post_request(environ):
-        start_response("403 Forbidden", [])
-        return []
+        start_response("405 Method Not Allowed", [("Allowed", "POST")])
+        return [b"POST requests only"]
 
     requestBody=environ["wsgi.input"].read().decode()
     reqParams=urllib.parse.parse_qs(requestBody)
@@ -59,7 +59,7 @@ def application(environ, start_response):
     # Get the client key from POST request.
     if "key" not in reqParams:
         start_response("400 Bad Request", [])
-        return []
+        return [b"Bad parameters"]
 
     key=reqParams["key"][0]
     secretKey="aIN0UXP4NNoANVGi5w3raGAFN1n5OLQZFDhwjs6HoX"
