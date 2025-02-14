@@ -3,13 +3,11 @@ import hashlib
 
 # Request URI: http://hoodrunner.kiloo.com/onlinesettings.php
 
-refreshInterval=1800 # 30 minutes
-
-ios_version="1.4.0"
+ios_version="1.0.0"
 ios_changelog = \
 """Placeholder changelog"""
 
-android_version="1.0.3"
+android_version="1.0.1"
 android_changelog = \
 """We've implemented an exit-button due to popular demand and optimized performance on some devices.
 And addition to that we made minor bug fixes.
@@ -21,13 +19,26 @@ def application(environ, start_response):
     reqParams=urllib.parse.parse_qs(queryStr,keep_blank_values=True)
     isAndroid="android" in reqParams
 
-    params="[refreshinterval]%d" % refreshInterval
+    params="[refreshinterval]%d" % 1800 # 30 minutes
     if isAndroid:
         params+="[latestversion]%s" % android_version
         params+="[latestversion_changelist]%s" % android_changelog
     else:
         params+="[latestversion]%s" % ios_version
         params+="[latestversion_changelist]%s" % ios_changelog
+
+    # Added in 1.4.0
+    params+="[season]%s" % "normal" # Options: normal, halloween, xmas, easter
+    params+="[end_season_datetime]%s" % "05-11-2012 00:00:00"
+
+    #params+="[in_app_tier_1]%d" % 1000 # Positive value means +N bonus coins, negative value means -%N off
+    #params+="[double_coin_discount]%d" % -50
+    #params+="[discount_end_time]%d" % 1739602857 # UNIX timestamp
+    #params+="[discount_deal_name]%s" % "Custom special offer"
+
+    #params+="[videoads_providerlist]%s" % "adcolony,vungleclips"
+    #params+="[chartboost_delay_seconds]%d" % 30
+    #params+="[videoads_defaultreward]%d" % 100
 
     sha1=hashlib.sha1()
     sha1.update(params.encode())
