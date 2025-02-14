@@ -19,7 +19,7 @@ def application(environ, start_response):
     reqParams=urllib.parse.parse_qs(queryStr,keep_blank_values=True)
     isAndroid="android" in reqParams
 
-    params="[refreshinterval]%d" % 1800 # 30 minutes
+    params="[refreshinterval]%d" % 3600 # 60 minutes
     if isAndroid:
         params+="[latestversion]%s" % android_version
         params+="[latestversion_changelist]%s" % android_changelog
@@ -34,11 +34,18 @@ def application(environ, start_response):
     #params+="[in_app_tier_1]%d" % 1000 # Positive value means +N bonus coins, negative value means -%N off
     #params+="[double_coin_discount]%d" % -50
     #params+="[discount_end_time]%d" % 1739602857 # UNIX timestamp
-    #params+="[discount_deal_name]%s" % "Custom special offer"
+    #params+="[discount_deal_name]%s" % "Special offer"
 
     #params+="[videoads_providerlist]%s" % "adcolony,vungleclips"
     #params+="[chartboost_delay_seconds]%d" % 30
     #params+="[videoads_defaultreward]%d" % 100
+
+    # Added in 1.5.0
+    params+="[social_report_min_seconds]%d" % 1200
+    params+="[social_report_games_count]%d" % 5
+    params+="[social_consolidate_min_seconds]%d" % 3600
+    params+="[social_register_min_seconds]%d" % 3600
+    params+="[social_friendscores_min_seconds]%d" % 120
 
     sha1=hashlib.sha1()
     sha1.update(params.encode())
