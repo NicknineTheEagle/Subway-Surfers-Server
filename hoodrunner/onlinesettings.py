@@ -68,6 +68,9 @@ def application(environ, start_response):
     #params+="[hoverboard_starttime_liberty]%s" % "02-12-2012 00:00:00"
     #params+="[hoverboard_expiretime_liberty]%s" % "02-01-2013 00:00:00"
 
+    # Added in 1.8.0
+    params+="[enable_local_notifications]%s" % "True"
+
     sha1=hashlib.sha1()
     sha1.update(params.encode())
     sha1.update(b"resxrctrv7tgv7gb8h9h9u0909kllfmolkjnhghgjjkhjghg")

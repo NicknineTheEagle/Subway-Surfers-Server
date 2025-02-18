@@ -29,3 +29,36 @@
 		defaultStartDate = new DateTime(2013, 1, 28)
 	}
 },
+{
+	BoardType.chick,
+	new Board
+	{
+		name = "Chicky",
+		boardModelName = "Chick",
+		tokenSprite2dName = "icon_egg",
+		price = 100,
+		unlockType = UnlockType.eggHunt,
+		description = string.Empty,
+		limitedDescription = "Egg Hunt Special",
+		isNewInThisUpdate = true,
+		hasOnlineTimeLimit = true,
+		defaultExpirationTime = new DateTime(2013, 4, 4),
+		defaultStartDate = new DateTime(2013, 2, 7)
+	}
+},
+{
+	BoardType.soccer,
+	new Board
+	{
+		name = "Kick-Off",
+		boardModelName = "Soccer",
+		price = 50000,
+		unlockType = UnlockType.coins,
+		description = string.Empty,
+		limitedDescription = "Rome Special",
+		isNewInThisUpdate = true,
+		hasOnlineTimeLimit = true,
+		defaultExpirationTime = new DateTime(2013, 4, 4),
+		defaultStartDate = new DateTime(2013, 2, 7)
+	}
+}

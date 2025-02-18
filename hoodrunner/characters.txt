@@ -54,3 +54,18 @@
 		characterLimitedDescription = "Rio Special"
 	}
 }
+{
+	CharacterType.roberto,
+	new Model
+	{
+		name = "Roberto",
+		modelName = "roberto",
+		unlockType = UnlockType.coins,
+		Price = 95000,
+		isNewInThisUpdate = true,
+		hasOnlineSettings = true,
+		defaultExpirationDate = new DateTime(2013, 4, 4),
+		defaultStartDate = new DateTime(2013, 2, 7),
+		characterLimitedDescription = "Rome Special"
+	}
+}
