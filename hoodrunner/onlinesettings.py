@@ -56,17 +56,17 @@ def application(environ, start_response):
     # Set expire time to "disabled" to remove the item from the store
     # regardless of the current date.
     # Zombie Jake (Halloween Special)
-    params+="[character_starttime_zombiejake]%s" % "23-10-2012 00:00:00"
-    params+="[character_expiretime_zombiejake]%s" % "05-11-2012 00:00:00"
+    #params+="[character_starttime_zombiejake]%s" % "23-10-2012 00:00:00"
+    #params+="[character_expiretime_zombiejake]%s" % "05-11-2012 00:00:00"
     # Elf Tricky (Holiday Special)
-    params+="[character_starttime_elftricky]%s" % "19-11-2012 00:00:00"
-    params+="[character_expiretime_elftricky]%s" % "01-01-2013 00:00:00"
+    #params+="[character_starttime_elftricky]%s" % "19-11-2012 00:00:00"
+    #params+="[character_expiretime_elftricky]%s" % "01-01-2013 00:00:00"
     # Tony (New York Special)
-    params+="[character_starttime_tony]%s" % "02-12-2012 00:00:00"
-    params+="[character_expiretime_tony]%s" % "02-01-2013 00:00:00"
+    #params+="[character_starttime_tony]%s" % "02-12-2012 00:00:00"
+    #params+="[character_expiretime_tony]%s" % "02-01-2013 00:00:00"
     # Liberty board (New York Special)
-    params+="[hoverboard_starttime_liberty]%s" % "02-12-2012 00:00:00"
-    params+="[hoverboard_expiretime_liberty]%s" % "02-01-2013 00:00:00"
+    #params+="[hoverboard_starttime_liberty]%s" % "02-12-2012 00:00:00"
+    #params+="[hoverboard_expiretime_liberty]%s" % "02-01-2013 00:00:00"
 
     sha1=hashlib.sha1()
     sha1.update(params.encode())
