@@ -27,6 +27,8 @@ def application(environ, start_response):
         params+="[latestversion]%s" % ios_version
         params+="[latestversion_changelist]%s" % ios_changelog
 
+    params+="[chartboost_delay_seconds]%d" % 30
+
     # Added in 1.4.0
     # Seasonal events (removed in 1.6.0)
     params+="[season]%s" % "normal" # Options: normal, halloween, xmas, easter
@@ -40,7 +42,6 @@ def application(environ, start_response):
 
     # Ads
     #params+="[videoads_providerlist]%s" % "adcolony,vungleclips"
-    #params+="[chartboost_delay_seconds]%d" % 30
     #params+="[videoads_defaultreward]%d" % 100
 
     # Added in 1.5.0
@@ -70,6 +71,22 @@ def application(environ, start_response):
 
     # Added in 1.8.0
     params+="[enable_local_notifications]%s" % "True"
+
+    # Added in 1.9.0
+    params+="[offerwall_number_of_earners]%d" % 8 # Set to "disabled" to disable the offer wall
+    params+="[offerwall_session_timeout]%d" % 43200
+    params+="[offerwall_offers_timeout]%d" % 30
+    params+="[offerwall_balance_timeout]%d" % 60
+    params+="[offerwal_min_reward_allowed]%d" % 10
+    params+="[offerwall_max_reward_allowed]%d" % 20000
+    params+="[offerwall_filter_min_max_reward]%s" % "True"
+    params+="[offerwall_filter_free]%s" % "True"
+    params+="[offerwall_filter_cost_per_install]%s" % "True"
+    params+="[offerwall_offer_order]%d" % 1 # 0 - descending, 1 - ascending
+
+    # Soft launch for revival mechanic
+    #params+="[save_me_locales]%s" % "da_DK;nl_NL;ru_RU" # all - everywhere, none - nowhere
+    params+="[save_me_locales]%s" % "all"
 
     sha1=hashlib.sha1()
     sha1.update(params.encode())

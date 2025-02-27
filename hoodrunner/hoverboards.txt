@@ -62,3 +62,19 @@
 		defaultStartDate = new DateTime(2013, 2, 7)
 	}
 }
+{
+	BoardType.theOutback,
+	new Board
+	{
+		name = "Outback",
+		boardModelName = "TheOutback",
+		price = 50000,
+		unlockType = UnlockType.coins,
+		description = string.Empty,
+		limitedDescription = "Sydney Special",
+		isNewInThisUpdate = true,
+		hasOnlineTimeLimit = true,
+		defaultExpirationTime = new DateTime(2013, 5, 2),
+		defaultStartDate = new DateTime(2013, 3, 20)
+	}
+},

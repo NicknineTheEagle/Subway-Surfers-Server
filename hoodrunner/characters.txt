@@ -69,3 +69,18 @@
 		characterLimitedDescription = "Rome Special"
 	}
 }
+{
+	CharacterType.kim,
+	new Model
+	{
+		name = "Kim",
+		modelName = "kim",
+		unlockType = UnlockType.coins,
+		Price = 95000,
+		isNewInThisUpdate = true,
+		hasOnlineSettings = true,
+		defaultExpirationDate = new DateTime(2013, 5, 2),
+		defaultStartDate = new DateTime(2013, 3, 20),
+		characterLimitedDescription = "Sydney Special"
+	}
+}
