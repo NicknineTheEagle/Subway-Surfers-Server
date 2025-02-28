@@ -64,10 +64,16 @@ def application(environ, start_response):
     key=reqParams["key"][0]
     secretKey="aIN0UXP4NNoANVGi5w3raGAFN1n5OLQZFDhwjs6HoX"
 
-    # Get midnight UTC of the next day and seconds until that.
+    # Reset the word at 01:00 UTC every day. Not midnight to eliminate the possibility of lag or clock desync
+    # causing the game to assign expire time to the previous day.
     dt=datetime.datetime.now(datetime.UTC)
-    nextdt=dt+datetime.timedelta(days=1)
-    nextdt=datetime.datetime(nextdt.year,nextdt.month,nextdt.day,tzinfo=datetime.UTC)
+    nextdt=datetime.datetime(dt.year,dt.month,dt.day,
+                             1,0,0,
+                             tzinfo=datetime.UTC)
+    if dt>=nextdt:
+        nextdt+=datetime.timedelta(days=1)
+
+    # Calculate seconds until expiration time.
     delta=nextdt-dt
     expireSec=delta.seconds
 
@@ -75,7 +81,7 @@ def application(environ, start_response):
     dayNumber=dt.timetuple().tm_yday-1
 
     # Get the word from the pool based on day of the month.
-    word=words[(dt.day-1) % len(words)]
+    word=words[(nextdt.day-1) % len(words)]
 
     # Calculate SHA-1 hash of the resulting values.
     hashedStr=str(dayNumber)+word+str(dt.year)
